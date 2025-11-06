@@ -21,7 +21,7 @@
 #   4) The full pca results for the fixed distance sncf, stored as .rda files in
 #       ./results/sncf/defoliation/fixed_dist_comparison
 #
-# Last modified: 7/26/2024
+# Last modified: 11/6/2025
 
 graphics.off()
 rm(list = ls())
@@ -29,12 +29,16 @@ rm(list = ls())
 # Load packages
 library(ncf)
 library(rio)
+library(stringr)
+library(dplyr)
 
 defol_inpath = "./data/defoliation/25km_GT2Years_diff/"
 dist_inpath = "./data/distance_matrices/"
 files = list.files(defol_inpath, pattern = ".csv")
 
 for (file in files) {
+    print(file)
+
     # Get source and species code
     sp = str_split(
         str_split(file, "\\.")[[1]][1],
@@ -66,6 +70,11 @@ for (file in files) {
                         width = 300, height = 250, units = "px", pointsize = 11)
     plot(mod, xlim = c(0,1000),ylim = c(0,1), yaxs = "i", xaxs = "i", xlab = "",
          ylab = "", cex.axis = 1.1, axes = F)
+
+    # Draw vertical line where line hits x-axis, if present
+    if (!is.na(mod$real$x.intercept)) {
+        abline(v=mod$real$x.intercept, lty=3)
+    }
     axis(2)
     axis(1)
     dev.off()
