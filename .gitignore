@@ -1,0 +1,9 @@
+.Rproj.user
+.Rhistory
+.RData
+.Ruserdata
+data/defoliation/raw/
+data/weather/raw/
+data/weather/raw_download/
+data/weather/25km/
+.idea/

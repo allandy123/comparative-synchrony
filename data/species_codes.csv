@@ -1,0 +1,14 @@
+code,commonName,scientificName,tsn,type
+mpb,Mountain pine beetle,Dendroctonus ponderosae,114918,Bark beetle
+sb,Spruce beetle,Dendroctonus rufipennis,114921,Bark beetle
+dfb,Douglas-fir beetle,Dendroctonus pseudotsugae,114919,Bark beetle
+wpb,Western pine beetle,Dendroctonus brevicomis,114913,Bark beetle
+wbbb,Western balsam bark beetle,Dryocoetes confusus,114927,Bark beetle
+esbw,Eastern spruce budworm,Choristoneura fumiferana,117862,Defoliator
+wsbw,Western spruce budworm,Choristoneura freemani,,Defoliator
+tcbw,Two-year cycle budworm,Choristoneura biennis,,Defoliator
+jpbw,Jack pine budworm,Choristoneura pinus,117864,Defoliator
+fe,Fir engraver,Scolytus ventralis,114953,Bark beetle
+dftm,Douglas fir tussock moth,Orgyia pseudotsugata,939675,Defoliator
+ftc,Forest tent caterpillar,Malacosoma disstria,117544,Defoliator
+sm,Spongy moth,Lymantria dispar,,Defoliator
