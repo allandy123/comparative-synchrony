@@ -61,7 +61,7 @@ for (file in files) {
     mod <- Sncf(defol_data$X,defol_data$Y,year_data, npoints = 100,
                 resamp = 1000, xmax = max_dist)
     saveRDS(mod, file = paste0("./results/sncf/defoliation/main/", source, "_",
-                               sp, ".rda"))
+                               sp, ".rds"))
 
     # Plot spatial correlation function
     mod$real$cbar <- NA
