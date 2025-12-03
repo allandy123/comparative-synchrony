@@ -112,8 +112,6 @@ for (file in files) {
     pc1_results <- Sncf(pc1$X, pc1$Y,
                         pc1 %>% dplyr::select(num_range("", 1997:2020)),
                         npoints = 100, resamp = 1000, xmax = max_dist)
-    saveRDS(pc1_results, file=paste0(results_outpath, source, "_", sp,
-                                    "_pc1.rda"))
     rm(pc1); gc()
 
     # PC2 sncf
@@ -123,8 +121,6 @@ for (file in files) {
     pc2_results <- Sncf(pc2$X, pc2$Y,
                         pc2 %>% dplyr::select(num_range("", 1997:2020)),
                         npoints = 100, resamp = 1000, xmax = max_dist)
-    saveRDS(pc2_results, file=paste0(results_outpath, source, "_", sp,
-                                     "_pc2.rda"))
     rm(pc2);gc()
 
     # PC3 sncf
@@ -134,8 +130,6 @@ for (file in files) {
     pc3_results <- Sncf(pc3$X, pc3$Y,
                         pc3 %>% dplyr::select(num_range("", 1997:2020)),
                         npoints = 100, resamp = 1000, xmax = max_dist)
-    saveRDS(pc3_results, file=paste0(results_outpath, source, "_", sp,
-                                     "_pc3.rda"))
     rm(pc3);gc()
 
     # Create and save plot

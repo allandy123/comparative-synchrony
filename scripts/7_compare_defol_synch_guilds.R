@@ -39,7 +39,6 @@ input_data = list.files(defol_sync_path, pattern=".csv", full.names=T) %>%
     arrange(source, type, species, dist)
 rm(species_codes)
 
-
 # Test Canada data at the 4 distances ####
 ca_dist_25 <- input_data %>% subset(source=="ca" & dist==25)
 ca_dist_100 <- input_data %>% subset(source=="ca" & dist==100)
@@ -91,6 +90,3 @@ print("USA 300km")
 usa_dist_300_mod <- wilcox.exact(usa_dist_300$sync ~ usa_dist_300$type, exact = TRUE)
 print(usa_dist_300_mod)
 rm(usa_dist_300)
-
-
-

@@ -57,9 +57,6 @@ export(p_results %>% arrange(country, species),
        paste0(results_path, "mrm_p_values.csv"))
 rm(p_results, sp, country)
 
-
-
-
 # Construct weights data frame ####
 # Because of naming convention, easier just to extract sp and country above and
 # construct filenames

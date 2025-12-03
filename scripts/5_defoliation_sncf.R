@@ -32,10 +32,6 @@ library(rio)
 library(stringr)
 library(dplyr)
 
-# Parameters: create_figures - Set this to true to create figures. Otherwise,
-# the only output will be the data files.
-create_figures = FALSE
-
 defol_inpath = "./data/defoliation/25km_GT2Years_diff/"
 dist_inpath = "./data/distance_matrices/"
 files = list.files(defol_inpath, pattern = ".csv")
@@ -60,30 +56,25 @@ for (file in files) {
     max_dist <- import(paste0(dist_inpath, file)) %>% max(na.rm=T)/2
 
     # Compute non-parametric spatial cross-correlation of pest damage up to
-    # lag distances of one-half of the maximum distance between locations and
-    # save the result
+    # lag distances of one-half of the maximum distance between locations
     mod <- Sncf(defol_data$X,defol_data$Y,year_data, npoints = 100,
                 resamp = 1000, xmax = max_dist)
-    saveRDS(mod, file = paste0("./results/sncf/defoliation/main/", source, "_",
-                               sp, ".rds"))
 
     # Plot spatial correlation function
-    if (create_figures) {
-        mod$real$cbar <- NA
-        dev.new(width = 2.25, height = 1.5, unit = "in", noRStudioGD = TRUE)
-        png(filename=paste0("./figures/sncf/defoliation/", source, "_", sp, ".png"),
-                            width = 300, height = 250, units = "px", pointsize = 11)
-        plot(mod, xlim = c(0,1000),ylim = c(0,1), yaxs = "i", xaxs = "i", xlab = "",
-             ylab = "", cex.axis = 1.1, axes = F)
+    mod$real$cbar <- NA
+    dev.new(width = 2.25, height = 1.5, unit = "in", noRStudioGD = TRUE)
+    png(filename=paste0("./figures/sncf/defoliation/", source, "_", sp, ".png"),
+                        width = 300, height = 250, units = "px", pointsize = 11)
+    plot(mod, xlim = c(0,1000),ylim = c(0,1), yaxs = "i", xaxs = "i", xlab = "",
+         ylab = "", cex.axis = 1.1, axes = F)
 
-        # Draw vertical line where line hits x-axis, if present
-        if (!is.na(mod$real$x.intercept)) {
-            abline(v=mod$real$x.intercept, lty=3)
-        }
-        axis(2)
-        axis(1)
-        dev.off()
+    # Draw vertical line where line hits x-axis, if present
+    if (!is.na(mod$real$x.intercept)) {
+        abline(v=mod$real$x.intercept, lty=3)
     }
+    axis(2)
+    axis(1)
+    dev.off()
 
     # REPEAT sncf but with fixed distance of 300km. Pull specific information for
     # guild comparison
@@ -107,9 +98,7 @@ for (file in files) {
     # Extract spatial correlation values at five chosen distances (0, 25, 100, 200, 300 km)
     pred_filtered <- filter(pred, dist %in% c(0, 25, 100, 200, 300))
 
-    # Write correlation values and confidence intervals to csv file and save sncf fit
-    saveRDS(mod, file = paste0("./results/sncf/defoliation/fixed_dist_comparison/",
-                               source, "_", sp, ".rds"))
+    # Write correlation values and confidence intervals to csv file
     write.csv(pred_filtered, paste0("./results/sncf/defoliation/fixed_dist_comparison/",
                                     source, "_", sp, ".csv"))
 }

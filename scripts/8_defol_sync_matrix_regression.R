@@ -83,5 +83,3 @@ for (file in files) {
     # Print results to screen, not saving anything here.
     print(summary(res))
 }
-
-
