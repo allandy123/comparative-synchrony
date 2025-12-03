@@ -13,12 +13,12 @@
 #
 # Outputs:
 #   1) Saved results of the sncf process for each country/species combination
-#       in ./results/sncf/defoliation/main/ as R data files (named .rda)
+#       in ./results/sncf/defoliation/main/ as R data files (named .rds)
 #   2) Plots of the sncf curves for each country/speices in
 #       ./results/sncf/defoliation/main/
 #   3) Saved synchrony values at fixed distances in a table stored in csv files
 #       in ./results/sncf/defoliation/fixed_dist_comparison
-#   4) The full pca results for the fixed distance sncf, stored as .rda files in
+#   4) The full pca results for the fixed distance sncf, stored as .rds files in
 #       ./results/sncf/defoliation/fixed_dist_comparison
 #
 # Last modified: 11/6/2025
@@ -31,6 +31,10 @@ library(ncf)
 library(rio)
 library(stringr)
 library(dplyr)
+
+# Parameters: create_figures - Set this to true to create figures. Otherwise,
+# the only output will be the data files.
+create_figures = FALSE
 
 defol_inpath = "./data/defoliation/25km_GT2Years_diff/"
 dist_inpath = "./data/distance_matrices/"
@@ -64,20 +68,22 @@ for (file in files) {
                                sp, ".rds"))
 
     # Plot spatial correlation function
-    mod$real$cbar <- NA
-    dev.new(width = 2.25, height = 1.5, unit = "in", noRStudioGD = TRUE)
-    png(filename=paste0("./figures/sncf/defoliation/", source, "_", sp, ".png"),
-                        width = 300, height = 250, units = "px", pointsize = 11)
-    plot(mod, xlim = c(0,1000),ylim = c(0,1), yaxs = "i", xaxs = "i", xlab = "",
-         ylab = "", cex.axis = 1.1, axes = F)
+    if (create_figures) {
+        mod$real$cbar <- NA
+        dev.new(width = 2.25, height = 1.5, unit = "in", noRStudioGD = TRUE)
+        png(filename=paste0("./figures/sncf/defoliation/", source, "_", sp, ".png"),
+                            width = 300, height = 250, units = "px", pointsize = 11)
+        plot(mod, xlim = c(0,1000),ylim = c(0,1), yaxs = "i", xaxs = "i", xlab = "",
+             ylab = "", cex.axis = 1.1, axes = F)
 
-    # Draw vertical line where line hits x-axis, if present
-    if (!is.na(mod$real$x.intercept)) {
-        abline(v=mod$real$x.intercept, lty=3)
+        # Draw vertical line where line hits x-axis, if present
+        if (!is.na(mod$real$x.intercept)) {
+            abline(v=mod$real$x.intercept, lty=3)
+        }
+        axis(2)
+        axis(1)
+        dev.off()
     }
-    axis(2)
-    axis(1)
-    dev.off()
 
     # REPEAT sncf but with fixed distance of 300km. Pull specific information for
     # guild comparison
@@ -103,7 +109,7 @@ for (file in files) {
 
     # Write correlation values and confidence intervals to csv file and save sncf fit
     saveRDS(mod, file = paste0("./results/sncf/defoliation/fixed_dist_comparison/",
-                               source, "_", sp, ".rda"))
+                               source, "_", sp, ".rds"))
     write.csv(pred_filtered, paste0("./results/sncf/defoliation/fixed_dist_comparison/",
                                     source, "_", sp, ".csv"))
 }

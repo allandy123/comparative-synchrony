@@ -94,7 +94,7 @@ Values are distances, in kilometers.
 
 4. Missing data codes: No missing data.
 
-5. Specialized formats or other abbreviations used: Species codes below and avaialble in "./data/species_codes.csv"
+5. Specialized formats or other abbreviations used: Species codes below and available in "./data/species_codes.csv"
 
 ---
 code	commonName	scientificName	tsn
