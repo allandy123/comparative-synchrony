@@ -14,7 +14,7 @@
 #   2) Distance matrices, based on the defoliation files, in ./data/distance_matrices
 #   3) Synchrony matrices, based on the defoliation files, in ./data/defoliation/synchrony_matrices
 
-# Author:
+# Author: A. Allstadt
 # Last updated: 7/2/2024
 
 # Read libraries, read parameters #####

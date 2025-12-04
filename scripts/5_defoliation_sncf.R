@@ -75,10 +75,10 @@ for (file in files) {
     axis(2)
     axis(1)
     dev.off()
+    rm(mod); gc()
 
     # REPEAT sncf but with fixed distance of 300km. Pull specific information for
     # guild comparison
-    rm(mod); gc()
     mod <- Sncf(defol_data$X,defol_data$Y, year_data, npoints = 61,
                 resamp = 1000, xmax = 300)
 
@@ -99,7 +99,7 @@ for (file in files) {
     pred_filtered <- filter(pred, dist %in% c(0, 25, 100, 200, 300))
 
     # Write correlation values and confidence intervals to csv file
-    write.csv(pred_filtered, paste0("./results/sncf/defoliation/fixed_dist_comparison/",
-                                    source, "_", sp, ".csv"))
+    write.csv(pred_filtered, paste0("./results/sncf/defoliation/",
+                                    source, "_", sp, ".csv"), row.names=F)
 }
 graphics.off()

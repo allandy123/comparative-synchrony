@@ -15,8 +15,8 @@
 #   3) Paired synchrony matrices based on sites in #1 and ordered as #1, saved
 #       as ca_<code>.csv in folder ./data/defoliation/synchrony_matrices/
 
-# Author:
-# Last updated: 7/25/2024
+# Author: A. Allstadt
+# Last updated: 12/3/2025
 
 # Read libraries, read parameters #####
 rm(list=ls());gc()

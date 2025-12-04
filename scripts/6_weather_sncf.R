@@ -14,12 +14,10 @@
 #       to quickly load the 1/2 max distance. Found in ./data/distance_matrices/
 #
 # Outputs:
-#   1) Saved results of the sncf process for each country/species/PC 1-3
-#       combination stored as R data files (.rda) in ./results/sncf/weather/
-#   2) Plots of the sncf curves for each country/species combination in
+#   1) Plots of the sncf curves for each country/species combination in
 #       ./figures/sncf/weather/
 #
-# Last modified: 7/26/2024
+# Last modified: 12/3/2025
 
 graphics.off()
 rm(list = ls())
@@ -36,7 +34,6 @@ weather_inpath = "./results/pca/sncf_diff/"
 # Used to get 1/2 max distance
 dist_inpath = "./data/distance_matrices/"
 # Output paths
-results_outpath = "./results/sncf/weather/"
 figures_outpath = "./figures/sncf/weather/"
 
 # Plotting function ####

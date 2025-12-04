@@ -18,8 +18,8 @@
 #   4) Once downloaded, Annuclim data organized and ready for data extraction
 #       in ./data/raw/
 #
-# Author:
-# Last updated: 7/25/2024
+# Author: A. Allstadt
+# Last updated: 12/3/2025
 
 rm(list=ls())
 library(downloader)
