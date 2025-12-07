@@ -396,7 +396,7 @@ Standard_Parallel_2: 60\
 Latitude_Of_Origin: 40\
 Datum: D_North_American_1983
 
-### Folder: synchrony_matrices
+#### Folder: synchrony_matrices
 To reduce the dimensionality of weather data, we performed a PCA on 36 weather
 variables (months x precipitation, tmax, tmin) amongst locations that experienced
 defoliation by the species in question. These files contain the synchrony 
@@ -404,7 +404,7 @@ matrices for the scores of the resulting principle components (PCs) #1-3, which
 explained most variance in weather across our study.
 
 Files are named for <country>_<species>_<PCx>.csv, where x is in 1-3 and 
-represents the princple component examined in the file.
+represents the principle component examined in the file.
 
 Rows and columns here do not have names, but they both correspond to the rows 
 in order contained within the corresponding defoliation files. If those raw data
@@ -412,3 +412,23 @@ files are changed, these matrices will need to be recalculated.
 
 Values are Spearman's rank correlation coefficients. See script titled 
 "4_weather_PCA.R" for exact methods and descriptions of the calculations.
+
+
+## Folder: Results
+
+### Folder: MRM
+MRM analyses were run on insect damage data derived from the US Forest Service
+Forest Health Protection National Insect and Disease Detection Survey or the 
+National Forest Pest Strategy Information System (Canada) and weather data 
+derived from ANUSPLIN, as defined in the Readme, scripts, and metadata within 
+this repository.
+
+These analyses were conducted using on a large computer cluster (see script 9), 
+which created many small text output files. These were aggregated by script 10 
+into these two CSV files. 
+
+#### File: mrm_p_values.csv
+
+
+
+#### File: mrm_weights.csv
