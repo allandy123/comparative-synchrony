@@ -12,14 +12,10 @@
 #       to quickly load the 1/2 max distance. Found in ./data/distance_matrices/
 #
 # Outputs:
-#   1) Saved results of the sncf process for each country/species combination
-#       in ./results/sncf/defoliation/main/ as R data files (named .rds)
-#   2) Plots of the sncf curves for each country/speices in
+#   1) Plots of the sncf curves for each country/species in
 #       ./results/sncf/defoliation/main/
-#   3) Saved synchrony values at fixed distances in a table stored in csv files
-#       in ./results/sncf/defoliation/fixed_dist_comparison
-#   4) The full pca results for the fixed distance sncf, stored as .rds files in
-#       ./results/sncf/defoliation/fixed_dist_comparison
+#   2) Saved synchrony values at fixed distances in a table stored in csv files
+#       in ./results/sncf/
 #
 # Last modified: 11/6/2025
 
