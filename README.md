@@ -302,9 +302,9 @@ the next "PCA" subfolder for analysis.
 
 Files in those folders are named <weather variable><Month>.csv, where weather 
 variables are: 
-- maxt: Mean monthly maximum temperature
-- mint: Mean monthly minimum temperature
-- pcp: Monthly total precipitation
+- maxt: Mean monthly maximum temperature in degrees Celsius
+- mint: Mean monthly minimum temperature in degrees Celsius
+- pcp: Monthly total precipitation in millimeters
 
 *Variable List*:
 
@@ -325,7 +325,8 @@ variables are:
 
 -   Remaining - Columns titled by year, which vary depending on species:
     Year to year values for the weather variable and month indicated in the 
-    filename.
+    filename. Units for precipitation variables are mm, and temperature 
+    variables are degrees Celsius.
 
 *Spatial information (Canada)*:
 
@@ -372,7 +373,8 @@ files.
 
 -   Remaining - 36 more columns titled by <variable><month>, as described for 
     the file names above. E.g., maxtJan. These contain the same weather data 
-    present in the 25km2 folder, just aggregated and rearranged for analysis.
+    present in the 25km2 folder, just aggregated and rearranged for analysis. 
+    Units for preciptation are mm. Units for temperatures are degrees Celsius.
 
 *Spatial information (Canada)*:
 
